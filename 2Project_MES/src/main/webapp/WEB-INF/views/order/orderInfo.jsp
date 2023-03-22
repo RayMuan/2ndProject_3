@@ -105,7 +105,8 @@
 			</div>
 		</form>
 		<!-- .content -->
-
+		
+		<form action="${pageContext.request.contextPath }/order/orderInfo" method="get">
 		<div class="content">
 			<div class="search-btn-div">
 				<div class="btn-div">
@@ -161,6 +162,7 @@
 				</div>
 			</div>
 		</div>
+		</form>
 		<!-- .content -->
 
 		<div class="clearfix"></div>
