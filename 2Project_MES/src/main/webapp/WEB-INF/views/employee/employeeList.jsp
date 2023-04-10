@@ -31,8 +31,14 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/script/jquery-3.6.3.js"></script>
 <script type="text/javascript">
+// if(window.opener && performance.navigation.type == 1) {
+// 	  window.location.reload();
+// 	}
 
 $(document).ready(function(){
+// 	window.location.reload();
+// 	self.close();
+window.close();
 	$('.emp_email').on('input',function(){
 		$.ajax({
 			url:'${pageContext.request.contextPath}/employee/emailCk',
@@ -115,11 +121,11 @@ $(document).ready(function(){
         return false;
       }
       
-//       if($("#emp_tel").length!=11){
-//           alert("전화번호를 11자 입력해주세요.");
-//           $("#emp_tel").focus();
-//           return false;
-//         }
+      if($("#emp_tel").length!=11){
+          alert("전화번호를 11자 입력해주세요.");
+          $("#emp_tel").focus();
+          return false;
+        }
       
       if($(".divresult_1").val()=="0"){
           alert("이메일 중복확인 해주세요.");
