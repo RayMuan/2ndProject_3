@@ -9,13 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.domain.InstructionDTO;
+import com.project.domain.LineDTO;
 import com.project.domain.PageDTO;
 import com.project.domain.PerformanceDTO;
 import com.project.domain.ProductDTO;
 import com.project.service.InstructionService;
+import com.project.service.LineService;
 import com.project.service.PerformanceService;
 
 @Controller
@@ -23,21 +26,24 @@ public class PerformanceController {
 
 	@Inject
 	private PerformanceService performanceService;
-
+	
 	@Inject
 	private InstructionService instructionService;
+
+	@Inject
+	private LineService lineService;
 
 	// 생산실적 현황 목록
 	@RequestMapping(value = "/performance/performanceCurrentInfo", method = RequestMethod.GET)
 	public String currentInfo(HttpServletRequest request, Model model) {
 		System.out.println("PerformanceController currentInfo()");
 		// 검색어 가져오기
-		String search = request.getParameter("searchInstCd");
-		String search2 = request.getParameter("searchProdCd");
-		String search3 = request.getParameter("searchPerfDate1");
-		String search4 = request.getParameter("searchPerfDate2");
-		String search5 = request.getParameter("searchLineCd");
-
+		String search = request.getParameter("search");
+		String search2 = request.getParameter("search2");
+		String search3 = request.getParameter("search3");
+		String search4 = request.getParameter("search4");
+		String search5 = request.getParameter("search5");
+		
 		// 한 화면에 보여줄 글 개수 설정
 		int pageSize = 20;
 		// 현페이지 번호 가져오기
@@ -60,9 +66,9 @@ public class PerformanceController {
 		pageDTO.setSearch3(search3);
 		pageDTO.setSearch4(search4);
 		pageDTO.setSearch5(search5);
-
+		
 		List<PerformanceDTO> performanceCurrentInfo = performanceService.performanceCurrentInfo(pageDTO);
-
+		
 		// 페이징 처리
 		// 검색어
 		int count = performanceService.performanceCurrentCount(pageDTO);
@@ -86,6 +92,9 @@ public class PerformanceController {
 		model.addAttribute("instructionDTO", instructionDTO);
 		model.addAttribute("performanceCurrentInfo", performanceCurrentInfo);
 		model.addAttribute("pageDTO", pageDTO);
+		// 라인 검색 옵션 셀렉트박스 값
+		List<LineDTO> searchLine = lineService.getSearchLine();
+		model.addAttribute("searchLine", searchLine);
 		// 주소변경 없이 이동
 		return "performance/performanceCurrentInfo";
 	}
@@ -99,7 +108,7 @@ public class PerformanceController {
 //		return perfCurrJsonList;
 //	}
 	// 생산실적 현황 json 리스트
-
+	
 	@ResponseBody
 	@RequestMapping(value = "/performance/perfCurrJsonList", method = RequestMethod.GET)
 	public List<PerformanceDTO> perfCurrJsonList(PerformanceDTO performanceDTO) {
@@ -107,7 +116,7 @@ public class PerformanceController {
 
 		return perfCurrJsonList;
 	}
-
+	
 	// 품목 검색 팝업창
 	@RequestMapping(value = "/product/productSearchPop", method = RequestMethod.GET)
 	public String productSearchPop(HttpServletRequest request, Model model) {
@@ -135,8 +144,8 @@ public class PerformanceController {
 		pageDTO.setSearch(search);
 		pageDTO.setSearch2(search2);
 		pageDTO.setSearch3(search3);
-
-
+		
+		
 		List<ProductDTO> productInfo = performanceService.getProductInfo(pageDTO);
 
 		// 페이징 처리
@@ -161,33 +170,23 @@ public class PerformanceController {
 		// 주소변경 없이 이동
 		return "product/productSearchPop";
 	}
-
+	
 	@RequestMapping(value = "/performance/insertPerf", method = RequestMethod.POST)
-	public String insertPerfPro(PerformanceDTO performanceDTO) {
+	public String insertInstPro(PerformanceDTO performanceDTO) {
 		System.out.println("instructionController insertInstPro()");
 		performanceService.insertPerf(performanceDTO);
-		System.out.println(performanceDTO.getPerf_good());
-		return "redirect:/performance/performanceCurrentInfo";
+		
+		return "redirect:/instruction/infoInst";
 	}
-
+	
 	@RequestMapping(value = "/performance/updatePerf", method = RequestMethod.POST)
-	public String updatePerfPro(HttpServletRequest request, PerformanceDTO performanceDTO) {
+	public String updateInstPro(HttpServletRequest request, PerformanceDTO performanceDTO) {
 		System.out.println("instructionController updateInstPro()");
 		String inst_cd=request.getParameter("inst_cd");
 		performanceDTO.setInst_cd(inst_cd);
-
-		performanceService.updatePerf(performanceDTO);
-		return "redirect:/performance/performanceCurrentInfo";
-	}
-	
-	@RequestMapping(value = "/performance/deletePerf", method = RequestMethod.GET)
-	public String deletePerfPro(HttpServletRequest request, String perf_cd) {
-		System.out.println("instructionController deleteInstPro()");
-		System.out.println(request.getParameter("delInstCd"));
-		perf_cd=request.getParameter("delPerfCd");
-		performanceService.deletePerf(perf_cd);
 		
-		return "redirect:/performance/performanceCurrentInfo";
+		performanceService.updatePerf(performanceDTO);
+		return "redirect:/Performance/performanceCurrentInfo";
 	}
 
 }

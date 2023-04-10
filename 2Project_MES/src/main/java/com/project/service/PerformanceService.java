@@ -8,7 +8,7 @@ import com.project.domain.ProductDTO;
 
 public interface PerformanceService {
 	public List<PerformanceDTO> performanceCurrentInfo(PageDTO pageDTO);
-
+	
 	// 검색어
 	public int performanceCurrentCount(PageDTO pageDTO);
 
@@ -21,6 +21,4 @@ public interface PerformanceService {
 	public void updatePerf(PerformanceDTO performanceDTO);
 
 	public void insertPerf(PerformanceDTO performanceDTO);
-
-	public void deletePerf(String perf_cd);
 }

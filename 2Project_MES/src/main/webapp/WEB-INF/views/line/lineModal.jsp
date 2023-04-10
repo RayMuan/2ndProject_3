@@ -121,6 +121,7 @@
 						});
 					}
 				});
+			event.preventDefault();
 			} catch (e) {
 				console.log(e instanceof TypeError); // true
 				console.log(e.message); // "null has no properties"
@@ -149,7 +150,8 @@
 
 				console.log("클릭한 Row의 모든 데이터1 : " + tr1.text());
 
-				$('#searchLineCd').val(mdalLineCd1);
+				$('#searchLineCd1').val(mdalLineCd1);
+				event.preventDefault();
 			}
 			if (clickBtnP.attr('id') === 'modalP2') {
 				var tr2 = $(this);
@@ -159,8 +161,9 @@
 				mdalLineCd2 = td2.eq(0).text();
 				mdalLineNm = td2.eq(1).text();
 				console.log("클릭한 Row의 모든 데이터2 : " + tr2.text());
-				$('#insertLineCd').val(mdalLineCd2);
-				$('#insertLineNm').val(mdalLineNm);
+				$('#searchLineCd2').val(mdalLineCd2);
+				$('#searchLineNm').val(mdalLineNm);
+				event.preventDefault();
 			}
 
 			jQuery('#lineModal').modal("hide");
@@ -172,15 +175,17 @@
 			if (clickBtnP.attr('id') == 'modalP1') {
 				modalLineCd1 = "";
 
-				$('#searchLineCd').val(modalLineCd1);
+				$('#searchLineCd1').val(modalLineCd1);
+				event.preventDefault();
 			}
 
 			if (clickBtnP.attr('id') == 'modalP2') {
 				modalLineCd2 = "";
 				modalLineNm = "";
 
-				$('#insertLineCd').val(modalLineCd2);
-				$('#insertLineNm').val(modalLineNm);
+				$('#searchLineCd2').val(modalLineCd2);
+				$('#searchLineNm').val(modalLineNm);
+				event.preventDefault();
 			}
 			
 			jQuery('#lineModal').modal("hide");

@@ -22,22 +22,22 @@
 		where 1=1
 		<if test="search != null">
 			<if test='search != ""'>
-				and i.inst_cd = #{search}
+				and pe.perf_date &gt;= #{search}
 			</if>
 		</if>
 		<if test="search2 != null">
 			<if test='search2 != ""'>
-				and p.prod_cd = #{search2}
+				and pe.perf_date &lt;= #{search2}
 			</if>
 		</if>
 		<if test="search3 != null">
 			<if test='search3 != ""'>
-				and pe.perf_date &gt;= #{search3}
+				and p.prod_cd = #{search3}
 			</if>
 		</if>
 		<if test="search4 != null">
 			<if test='search4 != ""'>
-				and pe.perf_date &lt;= #{search4}
+				and i.inst_cd = #{search4}
 			</if>
 		</if>
 		<if test="search5 != null">
@@ -47,7 +47,6 @@
 				</if>
 			</if>
 		</if>
-		order by pe.perf_cd desc
 		limit #{startRow}, #{pageSize}
 	</select>
 
@@ -159,24 +158,14 @@
 		</if>
 	</select>
 	
-	<insert id="insertPerf">
+	<insert id="insertInst">
 	insert into performance(perf_cd, inst_cd, perf_date, perf_good, perf_err, perf_cause, perf_note)
 	values(#{perf_cd}, #{inst_cd}, #{perf_date}, #{perf_good}, #{perf_err}, #{perf_cause}, #{perf_note})
 	</insert>
 	
-	<select id="getMaxPerf" resultType="java.lang.Integer">
+	<select id="getMaxInst" resultType="java.lang.Integer">
 	SELECT MAX(REGEXP_REPLACE(perf_cd, '[a-z]', ''))+1
 	from performance
     </select>
-	
-	<update id="updatePerf">
-	update performance
-	set perf_good=#{perf_good}, perf_err=#{perf_err}, perf_cause=#{perf_cause}, perf_note=#{perf_note}
-	where perf_cd = #{perf_cd}
-	</update>
-	
-	<delete id="deletePerf">
-	delete from performance
-	where perf_cd=#{perf_cd}
-	</delete>
+
 </mapper>
