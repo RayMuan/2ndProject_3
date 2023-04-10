@@ -2,8 +2,8 @@ package com.project.service;
 
 import java.util.List;
 
-import com.project.domain.InstructionDTO;
 import com.project.domain.PageDTO;
+import com.project.domain.InstructionDTO;
 
 public interface InstructionService {
 	public List<InstructionDTO> getInstList(PageDTO pageDTO);
@@ -15,7 +15,5 @@ public interface InstructionService {
 	public void updateInst(InstructionDTO instructionDTO);
 
 	public InstructionDTO getInst(String inst_cd);
-
-	public void deleteInst(String inst_cd);
 
 }

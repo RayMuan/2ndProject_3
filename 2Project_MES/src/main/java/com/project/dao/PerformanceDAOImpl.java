@@ -40,7 +40,7 @@ public class PerformanceDAOImpl implements PerformanceDAO {
 	@Override
 	public List<PerformanceDTO> perfCurrJsonList(PerformanceDTO performanceDTO) {
 		System.out.println("PerformanceDAOImpl perfCurrJsonList()");
-
+		
 		return sqlSession.selectList(namespace + ".perfCurrJsonList", performanceDTO);
 	}
 
@@ -62,32 +62,14 @@ public class PerformanceDAOImpl implements PerformanceDAO {
 
 	@Override
 	public void insertPerf(PerformanceDTO performanceDTO) {
-		System.out.println("PerformanceDAOImpl insertPerf()");
+		System.out.println("PerformanceDAOImpl insertPerf()");		
 		sqlSession.insert(namespace+".insertPerf", performanceDTO);
 	}
 
 	@Override
 	public Integer getMaxPerf() {
-		System.out.println("PerformanceDAOImpl getMaxPerf()");
+		System.out.println("PerformanceDAOImpl getMaxPerf()");		
 		return sqlSession.selectOne(namespace+".getMaxPerf");
 	}
 
-	@Override
-	public void updatePerf(PerformanceDTO performanceDTO) {
-		System.out.println("PerformanceDAOImpl updatePerf()");
-		
-		sqlSession.update(namespace+".updatePerf", performanceDTO);
-	}
-
-	@Override
-	public void deletePerf(String perf_cd) {
-		System.out.println("PerformanceDAOImpl deletePerf()");
-		
-		sqlSession.delete(namespace+".deletePerf", perf_cd);
-		
-	}
-	
-	
-	
-	
 }

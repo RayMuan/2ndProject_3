@@ -7,25 +7,25 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.project.domain.InstructionDTO;
 import com.project.domain.PageDTO;
+import com.project.domain.InstructionDTO;
 
 @Repository
 public class InstructionDAOImpl implements InstructionDAO{
 	@Inject
 	private SqlSession sqlSession;
-
+	
 	private static final String namespace="com.project.mappers.instructionMapper";
-
+	
 	@Override
 	public List<InstructionDTO> getInstList(PageDTO pageDTO) {
 		System.out.println("InstDAOImpl getInstList()");
 		pageDTO.setStartRow(pageDTO.getStartRow()-1);
-
+		
 		return sqlSession.selectList(namespace+".getInstList", pageDTO);
 	}
-
-
+	
+	
 	@Override
 	public int getInstCount(PageDTO pageDTO) {
 		System.out.println("InstDAOImpl getInstCount()");
@@ -36,21 +36,23 @@ public class InstructionDAOImpl implements InstructionDAO{
 
 	@Override
 	public void insertInst(InstructionDTO instructionDTO) {
-		System.out.println("InstDAOImpl insertInst()");
+		System.out.println("InstDAOImpl insertInst()");		
 		sqlSession.insert(namespace+".insertInst", instructionDTO);
 	}
 
 
 	@Override
 	public Integer getMaxInst() {
-		System.out.println("InstDAOImpl getMaxInst()");
+		System.out.println("InstDAOImpl getMaxInst()");		
 		return sqlSession.selectOne(namespace+".getMaxInst");
 	}
-
+	
 	@Override
 	public void updateInst(InstructionDTO instructionDTO) {
 		System.out.println("InstDAOImpl updateInstPro()");
-		System.out.println(instructionDTO);
+		System.out.println(instructionDTO.getInst_cd());
+		
+		
 		sqlSession.update(namespace+".updateInst", instructionDTO);
 	}
 
@@ -61,15 +63,7 @@ public class InstructionDAOImpl implements InstructionDAO{
 
 		return sqlSession.selectOne(namespace+".getInst", inst_cd);
 	}
-
-
-	@Override
-	public void deletInst(String inst_cd) {
-		System.out.println("InstDAOImpl deleteInst()");
-		
-		sqlSession.delete(namespace+".deleteInst", inst_cd);
-	}
-
 	
-
+	
+	
 }

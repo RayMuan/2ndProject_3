@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>imatinsert</title>
+<title>omatinsert</title>
 <meta name="description" content="Ela Admin - HTML5 Admin Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -40,7 +40,7 @@
 	$(document).ready(function() {
 		$('#largeModal').on('shown.bs.modal', function() {
 			$.ajax({
-				url : '/imat/ImatprodList',
+				url : '/omat/OmatprodList',
 				type : 'GET',
 				success : function(data) {
 					// display data in the modal body
@@ -58,7 +58,7 @@
 	// 		$('.id').focus();
 	// 		return false;
 	// 	}
-	//     if($('.imat_code').val()==""){
+	//     if($('.omat_code').val()==""){
 	//     	alert("비밀번호 입력하세요");
 	// 		$('.pass').focus();
 	// 		return false;
@@ -135,7 +135,7 @@
 
 
 
-		<div class="animated fadeIn">
+		<div class="anomated fadeIn">
 			<div class="row">
 				<div class="col-lg">
 					<div class="card">
@@ -192,7 +192,7 @@
 							<!-- 									</thead> -->
 							<!-- 									<tbody> -->
 
-							<%-- 									<c:forEach var="ProductDTO" items="${ImatprodList1}"> --%>
+							<%-- 									<c:forEach var="ProductDTO" items="${OmatprodList1}"> --%>
 							<!-- 										<tr> -->
 							<%-- 											<td>${ProductDTO.prod_cd}</td> --%>
 							<%-- 											<td>${ProductDTO.prod_nm}</td> --%>
@@ -207,16 +207,16 @@
 							<button type="button" data-toggle="modal"
 								data-target="#largeModal">품번선택</button>
 							<form
-								action="${pageContext.request.contextPath}/imat/imatinsertPro"
+								action="${pageContext.request.contextPath}/omat/omatinsertPro"
 								id="insert" method="post">
 								<fieldset>
-									<label>입고번호</label> <input type="text" name="imat_cd"
-										class="imat_cd"><br> <label>상품코드</label> <input
+									<label>입고번호</label> <input type="text" name="omat_cd"
+										class="omat_cd"><br> <label>상품코드</label> <input
 										type="text" name="prod_cd" class="prod_cd"><br> <label>입고창고</label>
-									<input type="text" name="imat_stg" class="imat_stg"><br>
-									<label>입고수량</label><input type="text" name="imat_count"
-										class="imat_count"><br> <label>비고</label><input
-										type="text" name="imat_note" class="imat_note"><br>
+									<input type="text" name="omat_stg" class="omat_stg"><br>
+									<label>입고수량</label><input type="text" name="omat_count"
+										class="omat_count"><br> <label>비고</label><input
+										type="text" name="omat_note" class="omat_note"><br>
 								</fieldset>
 								<div class="clear"></div>
 								<div id="buttons">
@@ -226,18 +226,18 @@
 							</form>
 							<%-- 								<c:if test="${pageDTO.startPage > pageDTO.pageBlock }"> --%>
 							<!-- 										<a -->
-							<%-- 											href="${pageContext.request.contextPath}/imat/imatbeList?pageNum=${pageDTO.startPage - pageDTO.pageBlock }">[이전페이지]</a> --%>
+							<%-- 											href="${pageContext.request.contextPath}/omat/omatbeList?pageNum=${pageDTO.startPage - pageDTO.pageBlock }">[이전페이지]</a> --%>
 							<%-- 									</c:if> --%>
 
 							<%-- 									<c:forEach var="i" begin="${pageDTO.startPage }" --%>
 							<%-- 										end="${pageDTO.endPage }" step="1"> --%>
 							<!-- 										<a -->
-							<%-- 											href="${pageContext.request.contextPath}/imat/imatbeList?pageNum=${i}">${i}</a> --%>
+							<%-- 											href="${pageContext.request.contextPath}/omat/omatbeList?pageNum=${i}">${i}</a> --%>
 							<%-- 									</c:forEach> --%>
 
 							<%-- 									<c:if test="${pageDTO.endPage < pageDTO.pageCount }"> --%>
 							<!-- 										<a -->
-							<%-- 											href="${pageContext.request.contextPath}/imat/imatbeList?pageNum=${pageDTO.startPage + pageDTO.pageBlock }">[다음페이지]</a> --%>
+							<%-- 											href="${pageContext.request.contextPath}/omat/omatbeList?pageNum=${pageDTO.startPage + pageDTO.pageBlock }">[다음페이지]</a> --%>
 							<%-- 									</c:if> --%>
 						</div>
 					</div>
@@ -275,7 +275,7 @@
 						</thead>
 						<tbody>
 
-							<c:forEach var="ProductDTO" items="${ImatprodList}">
+							<c:forEach var="ProductDTO" items="${OmatprodList}">
 								<tr>
 									<td>${ProductDTO.prod_cd}</td>
 									<td>${ProductDTO.prod_nm}</td>

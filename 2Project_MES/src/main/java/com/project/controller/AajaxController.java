@@ -28,49 +28,51 @@ public class AajaxController {
 
 	@Inject
 	private OrderService orderService;
-
+	
 	@Inject
 	private CodeService codeService;
-
+	
 	@Inject
 	private EmployeeService employeeService;
+
 
 //	@Inject
 //	private LineService lineService;
 //	@Inject
 //	private ProductService prodService;
 
+
 	@RequestMapping(value = "/code/listjson", method = RequestMethod.GET)
 	public ResponseEntity<List<CodeDTO>> listjson(HttpServletRequest request) {
-
+		
 		String code_grp = request.getParameter("code_grp");
 		System.out.println("AjaxController:"+code_grp);
 		List<CodeDTO> codeList3=codeService.getCodeList3(code_grp);
-
+		
 		//출력 결과 ResponseEntity 저장 => 되돌아감
 		ResponseEntity<List<CodeDTO>> entity=
 				new ResponseEntity<List<CodeDTO>>(codeList3,HttpStatus.OK);
-
+		
 		return entity;
 	}
-
+	
 	@RequestMapping(value = "/employee/emailCk", method = RequestMethod.GET)
 	public ResponseEntity<String> idCheck(HttpServletRequest request) {
 		String result="";
 		String emp_email=request.getParameter("emp_email");
 		EmployeeDTO employeeDTO=employeeService.emailCk(emp_email);
-
+		
 		if(employeeDTO!=null) {
 			result="emailUp";
 		}else {
 			result="emailOk";
 		}
-
+		
 		ResponseEntity<String> entity=
 				new ResponseEntity<String>(result,HttpStatus.OK);
 		return entity;
 	}
-
+	
 	@RequestMapping(value = "/employee/telCk", method = RequestMethod.GET)
 	public ResponseEntity<String> telCk(HttpServletRequest request) {
 		String result="";
@@ -88,7 +90,7 @@ public class AajaxController {
 
 	@RequestMapping(value = "/order/orderInsertD", method = RequestMethod.GET)
 	public ResponseEntity<OrderDTO> orderInsertD(HttpServletRequest request) {
-		String ord_cd=request.getParameter("ord_cd");
+		String ord_cd=(String)request.getParameter("ord_cd");
 		OrderDTO orderDTO=orderService.getOrderInsert(ord_cd);
 		ResponseEntity<OrderDTO> entity=new ResponseEntity<OrderDTO>(orderDTO,HttpStatus.OK);
 		
@@ -232,7 +234,7 @@ public class AajaxController {
 //	}
 
 }
-
-
-
-
+	
+	
+	
+	

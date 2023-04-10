@@ -33,11 +33,15 @@
 	href="${pageContext.request.contextPath}/resources/css/cs-skin-elastic.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
+
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
 	rel='stylesheet' type='text/css'>
+<<<<<<< HEAD
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/performanceCurr.css">
+=======
+>>>>>>> branch 'master' of https://github.com/RayMuan/2ndProject_3.git
 </head>
 <body>
 	<!-- Left Panel1 -->
@@ -81,22 +85,32 @@
 							<div class="card-body card-block">
 								<form action="${pageContext.request.contextPath}/instruction/infoInst" name="searchInst" class="form-inline" method="get">
 									<div class="form-group col-6 mb-1">
-										<label for="searchOrdDate" class="pr-1  form-control-label mr-2">지시일자</label>
-										<input type="date" id="searchOrdDate1" name="searchOrdDate1" class="form-control" value="${pageDTO.search2 }">
-										~
-										<input type="date" id="searchOrdDate2" name="searchOrdDate2" class="form-control" value="${pageDTO.search3 }">
-									</div>
-									<div class="form-group col-6 mb-1">
-										<label for="searchLine" class="pr-1 form-control-label mr-2">라인</label>
+										<label for="searchLine" class="pr-1 form-control-label">라인</label>
 										<div class="input-group modalP" id="modalP1">
-											<input type="text" id="searchLineCd" name="searchLineCd" placeholder="Line Code" class="form-control bg-white" value="${pageDTO.search }" readonly>
+											<input type="text" id="searchLineCd1" name="searchLineCd" placeholder="Line Code" class="form-control bg-white" value="${pageDTO.search }" readonly>
 											<div class="input-group-btn">
 												<input type="button" class="btn btn-primary ml-2 linePopBtn" id="linePop" value="검색">
 											</div>
 										</div>
 									</div>
+									<div class="form-group col-6 mb-1">
+										<label for="searchOrdDate" class="pr-1  form-control-label">지시일자</label>
+										<input type="date" id="searchOrdDate1" name="searchOrdDate1" class="form-control" value="${pageDTO.search2 }">
+										~
+										<input type="date" id="searchOrdDate2" name="searchOrdDate2" class="form-control" value="${pageDTO.search3 }">
+									</div>
 									<div class="form-group col-6 mt-1">
-										<label class="p  form-control-label" for="instStCk">지시상태</label>
+										<label for="searchProd" class="pr-1 form-control-label">품번</label>
+										<input type="text" aria-label="filter" id="searchProdCd" name="searchProdCd" placeholder="Prod Code" class="form-control bg-white" value="${pageDTO.search4 }"readonly>
+										<div class="input-group">
+											<div class="input-group">
+												<button id="prodModalBtn" class="btn btn-primary ml-2">검색
+												</button>
+											</div>
+										</div>
+									</div>
+									<div class="form-group col-6 mt-1">
+										<label class="pr-1  form-control-label" for="instStCk">지시상태</label>
 										<div class="form-control border-0" id="instStCk">
 											<div class="form-check-inline form-check">
 												<label for="searchInstSt1" class="form-check-label mr-2">
@@ -129,6 +143,7 @@
 											</div>
 										</div>									
 									</div>
+<<<<<<< HEAD
 									<div class="form-group col-6 mt-1">
 										<label for="searchProd" class="pr-1 form-control-label mr-2">품번</label>
 										<input type="text" aria-label="filter" id="productSearchId" name="searchProdCd" placeholder="Prod Code" class="form-control bg-white" value="${pageDTO.search4 }"readonly>
@@ -141,6 +156,10 @@
 									</div>
 									<div class="col p-0 mt-3">
 									<input type="submit" class="btn btn-primary col-2 float-right ml-3" id="searchInst" value="조회">
+=======
+									<div class="col p-0">
+									<input type="submit" class="btn btn-primary col-2 float-right ml-3" id="searchInst" value="검색">
+>>>>>>> branch 'master' of https://github.com/RayMuan/2ndProject_3.git
 									<input type="reset" class="btn btn-secondary col-1 float-right reset" value="취소">
 									</div>
 								</form>
@@ -179,13 +198,13 @@
 												<td scope="row"><input type="text" id="insertInstCd" name="inst_cd" class="form-control" readonly></td>
 												<td>
 													<div class="input-group modalP" id="modalP2">
-														<input type="text" id="insertLineCd" name="line_cd" value="" placeholder="Line Code" class="form-control bg-white" readonly>
+														<input type="text" id="searchLineCd2" name="line_cd" value="" placeholder="Line Code" class="form-control bg-white" readonly>
 														<div class="input-group-btn">
 															<input type="button" class="btn btn-primary linePopBtn" id="linePopI" value="검색">
 														</div>
 													</div>
 												</td>
-												<td><input type="text" id="insertLineNm" disabled class="form-control"></td>
+												<td><input type="text" id="searchLineNm" disabled class="form-control"></td>
 												<td>
 													<div class="input-group">
 														<input type="text" id="insertOrderCd" name="ord_cd" value="" placeholder="Order Code" class="form-control bg-white" readonly>
@@ -210,7 +229,7 @@
                                                 	</select>                                            	
 												</div>
 												</td>
-												<td><input type="text" id="insertProdCount" name="inst_count" class="form-control  bg-white" 	></td>
+												<td><input type="text" id="insertProdCount" name="inst_count" class="form-control  bg-white"></td>
 												<td><input type="number" id="insertInstFcount" name="inst_fcount" class="form-control" value="0" ></td>
 												<td><input type="text" id="insertClientNm" disabled class="form-control"></td>
 											</tr>
@@ -218,7 +237,6 @@
 									</table>
 									<button type="submit" class="btn btn-primary col-2 float-right ml-3" id="insertInstBtn">추가</button>
 									<button type="submit" class="btn btn-primary col-1 float-right ml-3" id="updateInstBtn" disabled>수정</button>
-									<button type="button" class="btn btn-secondary col-1 float-right ml-3" id="deleteInstBtn" disabled>삭제</button>
 									<button type="reset"  class="btn btn-secondary col-1 float-right reset" id="resetInstBtn">취소</button>
 								</div>
 							</form>
@@ -238,7 +256,7 @@
 								<strong class="card-title">작업지시</strong>
 							</div>
 							<div class="card-body">
-								<table id="hover_tb" class="table table-hover table-striped table-bordered table-align-middle mb-0">
+								<table class="table table-hover table-striped table-bordered table-align-middle mb-0">
 									<thead class="thead-dark">
 										<tr>
 											<th scope="col">지시번호</th>
@@ -252,13 +270,14 @@
 											<th scope="col">지시수량</th>
 											<th scope="col">생산량</th>
 											<th scope="col">지시날짜</th>
-											<th scope="col">업체</th>
+											<th scope="col">업체명</th>
 											<th scope="col"> </th>
 									</thead>
 									<tbody>
 										<c:forEach var="instructionDTO" items="${instList }">
-											<tr id="infoInstTr" class="data-row">
-												<td>${instructionDTO.inst_cd }</td>
+											<tr id="infoInstTr">
+												<td scope="row">${instructionDTO.inst_cd }
+												</td>
 												<td>${instructionDTO.line_cd }</td>
 												<td>${instructionDTO.line_nm }</td>
 												<td>${instructionDTO.ord_cd }</td>
@@ -268,11 +287,11 @@
 												<td>${instructionDTO.inst_st }</td>
 												<td>${instructionDTO.inst_count }</td>
 												<td>${instructionDTO.inst_fcount }</td>
-												<td><fmt:formatDate value="${instructionDTO.inst_date }" pattern="yyyy.MM.dd HH:mm"/></td>
+												<td><fmt:formatDate value="${instructionDTO.inst_date }" pattern="yyyy.MM.dd hh:mm"/></td>
 												<td>${instructionDTO.cli_nm }</td>
 												<td>
 												<div class="input-group">
-												<button id="editInstBtn" class="btn btn-secondary" value="${instructionDTO.inst_cd }">수정</button>
+												<button id="editInstBtn" class="btn btn-secondary" value="${instructionDTO.line_cd }">수정</button>
 												</div>
 												</td>
 											</tr>
@@ -280,8 +299,8 @@
 									</tbody>
 								</table>
 								<!-- 페이징 -->
-								<div class="col p-0 mt-3">
-									<div class="dataTables_paginate paging_simple_numbers float-right">
+								<div class="col-sm-12 col-md-7">
+									<div class="dataTables_paginate paging_simple_numbers">
 										<ul class="pagination">
 										<!-- 이전 -->
 										<c:if test="${pageDTO.startPage <= pageDTO.pageBlock }">
@@ -347,7 +366,6 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
 	<script type="text/javascript">
-		// 추가버튼 제어
 		$(document).on("click", "#insertInstBtn", function(){
 			if($('#insertOrderCd').val() == ''){
 				alert("수주번호를 입력해주세요.");
@@ -362,7 +380,6 @@
 			}
 		});
 		
-		// 취소 버튼 (clear)
 		$(document).on("click",".reset", function(){
 			console.log($(this).closest('form').find('div input[type="text"]'));
 			console.log($(this).attr('id'));
@@ -371,22 +388,34 @@
 			if($(this).attr('id')=='resetInstBtn'){
 				$("#insertInstForm").attr('action', '${pageContext.request.contextPath}/instruction/insertInst');
 				$('#updateInstBtn').prop('disabled', true);
-				$('#deleteInstBtn').prop('disabled', true);
 				$('#insertInstBtn').prop('disabled', false);
 			}
 		});
 		
-		// 행 클릭시 이동
+
 		$(document).on("click","#infoInstTr td:not(:last-child)", function(){
-			location.href='${pageContext.request.contextPath}/performance/performanceCurrentInfo?pageNum=1&search='+$(this).closest('tr').children('td:eq(0)').text()+'&search2=&search3=&search4=&search5=';
+			location.href='${pageContext.request.contextPath}/performance/performanceCurrentInfo?pageNum=1&search=&search2=&search3=&search4='+$(this).closest('tr').children('td:eq(0)').text()+'&search5=전체';
 		});
 
+<<<<<<< HEAD
 		// 회색 수정 버튼 
+=======
+		
+>>>>>>> branch 'master' of https://github.com/RayMuan/2ndProject_3.git
 		$(document).on("click", "#editInstBtn", function(){
-			console.log('['+$(this).closest('tr').children('td:eq(0)').text().trim()+']');
-			$('#insertInstCd').val($(this).closest('tr').children('td:eq(0)').text().trim());
-			$('#insertLineCd').val($(this).closest('tr').children('td:eq(1)').text());
-			$('#insertLineNm').val($(this).closest('tr').children('td:eq(2)').text());
+			console.log($(this).closest('tr').children('td:eq(6)').text());
+			$(searchLineCd2).val('');
+			$(searchLineNm).val('');
+			$(insertProdCd).val('');
+			$(insertProdNm).val('');
+			$(insertProdUnit).val('');
+			$(insertProdCount).val('');
+			$(insertOrderCd).val('');
+			$(insertClientNm).val('');
+			
+			$('#insertInstCd').val($(this).closest('tr').children('td:eq(0)').text());
+			$('#searchLineCd2').val($(this).closest('tr').children('td:eq(1)').text());
+			$('#searchLineNm').val($(this).closest('tr').children('td:eq(2)').text());
 			$('#insertOrderCd').val($(this).closest('tr').children('td:eq(3)').text());
 			$('#insertProdCd').val($(this).closest('tr').children('td:eq(4)').text());
 			$('#insertProdNm').val($(this).closest('tr').children('td:eq(5)').text());
@@ -395,13 +424,16 @@
 			$('#insertProdCount').val($(this).closest('tr').children('td:eq(8)').text());
 			$('#insertInstFcount').val($(this).closest('tr').children('td:eq(9)').text());
 			$('#insertClientNm').val($(this).closest('tr').children('td:eq(11)').text());
-			$('#insertInstForm').attr('action', '${pageContext.request.contextPath}/instruction/updateInst');
+			$("#insertInstForm").attr('action', '${pageContext.request.contextPath}/instruction/updateInst');
+			$("#insertInstForm").attr('action', '${pageContext.request.contextPath}/instruction/updateInst');
+			$("#insertInstForm").attr('action', '${pageContext.request.contextPath}/instruction/updateInst');
 			$('#updateInstBtn').prop('disabled', false);
-			$('#deleteInstBtn').prop('disabled', false);
 			$('#insertInstBtn').prop('disabled', true);
 			$('#lineModalBtn').focus();
+
 		});
 		
+<<<<<<< HEAD
 		// 삭제버튼 제어
 		$(document).on("click", "#deleteInstBtn", function(){
 			console.log($('#insertInstCd').val());
@@ -414,6 +446,14 @@
 			window.open(
 					'${pageContext.request.contextPath}/line/linePop?btnId='+$(this).attr('id'),
 					'LinePop', 'width=800,height=650');
+=======
+		$("#searchInstSt1").change(function(){
+			if($("#searchInstSt1").is(":checked")){
+				$("#searchInstSt1").attr('value', '대기');
+			}else{
+				$("#searchInstSt1").attr('value', '');
+			}
+>>>>>>> branch 'master' of https://github.com/RayMuan/2ndProject_3.git
 		});
 		
 		// 품목 팝업
